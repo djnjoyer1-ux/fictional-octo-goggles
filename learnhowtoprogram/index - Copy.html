@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Python Interview Explanations</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background-color: #f8f8f8; }
+    .section { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    h1 { color: #333; }
+    pre { background: #f0f0f0; padding: 10px; border-radius: 5px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>Basic Python Coding Questions – Explained</h1>
+
+  <div class="section">
+    <h2>1. Reverse a String</h2>
+    <p><strong>Interview Question:</strong> Write a Python function that reverses a string.</p>
+    <pre>
+def reverse_string(s):
+    return s[::-1]
+    </pre>
+    <p><strong>Explanation:</strong> Python allows string slicing. <code>s[::-1]</code> starts from the end and moves backward, effectively reversing the string.</p>
+  </div>
+
+  <div class="section">
+    <h2>2. Check for Palindrome</h2>
+    <p><strong>Interview Question:</strong> Write a function to check if a string is a palindrome (same forward and backward).</p>
+    <pre>
+def is_palindrome(s):
+    return s == s[::-1]
+    </pre>
+    <p><strong>Explanation:</strong> A palindrome reads the same backward. Using slicing again, we compare the string to its reverse.</p>
+  </div>
+
+  <div class="section">
+    <h2>3. Find Maximum in a List</h2>
+    <p><strong>Interview Question:</strong> Given a list of numbers, return the maximum value.</p>
+    <pre>
+def find_max(lst):
+    return max(lst)
+    </pre>
+    <p><strong>Explanation:</strong> Python's built-in <code>max()</code> function efficiently finds the largest value in a list.</p>
+  </div>
+
+  <div class="section">
+    <h2>4. FizzBuzz (1–100)</h2>
+    <p><strong>Interview Question:</strong> Print numbers from 1 to 100. For multiples of 3, print "Fizz"; for 5, print "Buzz"; for both, print "FizzBuzz".</p>
+    <pre>
+def fizzbuzz():
+    for i in range(1, 101):
+        if i % 15 == 0:
+            print("FizzBuzz")
+        elif i % 3 == 0:
+            print("Fizz")
+        elif i % 5 == 0:
+            print("Buzz")
+        else:
+            print(i)
+    </pre>
+    <p><strong>Explanation:</strong> Modulus checks determine divisibility. 15 is the least common multiple of 3 and 5.</p>
+  </div>
+
+  <div class="section">
+    <h2>5. Prime Number Check</h2>
+    <p><strong>Interview Question:</strong> Determine if a number is a prime.</p>
+    <pre>
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+    </pre>
+    <p><strong>Explanation:</strong> Only check up to the square root of <code>n</code> for efficiency. If no divisor is found, it’s prime.</p>
+  </div>
+
+  <div class="section">
+    <h2>6. Factorial</h2>
+    <p><strong>Interview Question:</strong> Calculate the factorial of a number using recursion.</p>
+    <pre>
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n - 1)
+    </pre>
+    <p><strong>Explanation:</strong> A classic recursive definition. Base case: 0! = 1. Recursive case: n! = n × (n-1)!</p>
+  </div>
+
+  <div class="section">
+    <h2>7. Find Duplicates in List</h2>
+    <p><strong>Interview Question:</strong> Given a list, return the duplicate elements.</p>
+    <pre>
+def find_duplicates(lst):
+    seen = set()
+    duplicates = set()
+    for num in lst:
+        if num in seen:
+            duplicates.add(num)
+        else:
+            seen.add(num)
+    return list(duplicates)
+    </pre>
+    <p><strong>Explanation:</strong> Use a <code>set</code> to track seen values and another to collect duplicates. Avoids repeated values.</p>
+  </div>
+
+</body>
+</html>

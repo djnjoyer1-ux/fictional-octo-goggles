@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Programming Functions</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    .section { margin-bottom: 30px; }
+    input, button { margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Basic Programming Interview Questions</h1>
+
+  <div class="section">
+    <h2>1. Reverse a String</h2>
+    <input id="reverseInput" type="text" placeholder="Enter a string">
+    <button onclick="reverseString()">Reverse</button>
+    <p id="reverseResult"></p>
+  </div>
+
+  <div class="section">
+    <h2>2. Check for Palindrome</h2>
+    <input id="palindromeInput" type="text" placeholder="Enter a string">
+    <button onclick="checkPalindrome()">Check</button>
+    <p id="palindromeResult"></p>
+  </div>
+
+  <div class="section">
+    <h2>3. Find Maximum in List</h2>
+    <input id="maxInput" type="text" placeholder="Enter numbers separated by commas">
+    <button onclick="findMax()">Find Max</button>
+    <p id="maxResult"></p>
+  </div>
+
+  <div class="section">
+    <h2>4. FizzBuzz (1–100)</h2>
+    <button onclick="runFizzBuzz()">Run</button>
+    <pre id="fizzBuzzResult"></pre>
+  </div>
+
+  <div class="section">
+    <h2>5. Prime Check</h2>
+    <input id="primeInput" type="number" placeholder="Enter a number">
+    <button onclick="isPrime()">Check</button>
+    <p id="primeResult"></p>
+  </div>
+
+  <div class="section">
+    <h2>6. Factorial</h2>
+    <input id="factInput" type="number" placeholder="Enter a number">
+    <button onclick="factorial()">Calculate</button>
+    <p id="factResult"></p>
+  </div>
+
+  <div class="section">
+    <h2>7. Find Duplicates</h2>
+    <input id="dupInput" type="text" placeholder="Enter numbers separated by commas">
+    <button onclick="findDuplicates()">Find</button>
+    <p id="dupResult"></p>
+  </div>
+
+  <script>
+    function reverseString() {
+      const input = document.getElementById('reverseInput').value;
+      document.getElementById('reverseResult').textContent = input.split('').reverse().join('');
+    }
+
+    function checkPalindrome() {
+      const input = document.getElementById('palindromeInput').value;
+      const isPal = input === input.split('').reverse().join('');
+      document.getElementById('palindromeResult').textContent = isPal ? "Yes, it's a palindrome!" : "Nope, not a palindrome.";
+    }
+
+    function findMax() {
+      const nums = document.getElementById('maxInput').value.split(',').map(Number);
+      const max = Math.max(...nums);
+      document.getElementById('maxResult').textContent = `Max: ${max}`;
+    }
+
+    function runFizzBuzz() {
+      let output = '';
+      for (let i = 1; i <= 100; i++) {
+        if (i % 15 === 0) output += "FizzBuzz\n";
+        else if (i % 3 === 0) output += "Fizz\n";
+        else if (i % 5 === 0) output += "Buzz\n";
+        else output += i + "\n";
+      }
+      document.getElementById('fizzBuzzResult').textContent = output;
+    }
+
+    function isPrime() {
+      const n = parseInt(document.getElementById('primeInput').value);
+      if (n <= 1) return document.getElementById('primeResult').textContent = "Not Prime";
+      for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return document.getElementById('primeResult').textContent = "Not Prime";
+      }
+      document.getElementById('primeResult').textContent = "Prime";
+    }
+
+    function factorial() {
+      const n = parseInt(document.getElementById('factInput').value);
+      function fact(x) {
+        return x === 0 ? 1 : x * fact(x - 1);
+      }
+      document.getElementById('factResult').textContent = `Factorial: ${fact(n)}`;
+    }
+
+    function findDuplicates() {
+      const nums = document.getElementById('dupInput').value.split(',').map(Number);
+      const seen = new Set();
+      const duplicates = new Set();
+      nums.forEach(num => {
+        if (seen.has(num)) duplicates.add(num);
+        else seen.add(num);
+      });
+      document.getElementById('dupResult').textContent = `Duplicates: ${[...duplicates].join(', ')}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python if __name__ == "__main__" Examples</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+        code { background: #f4f4f4; padding: 5px; display: block; }
+        pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
+        h2 { color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Python <code>if __name__ == "__main__"</code> Examples</h1>
+    
+    <h2>1. unittest (Python Testing Framework)</h2>
+    <pre><code>if __name__ == "__main__":
+    import unittest
+    unittest.main()</code></pre>
+    <p>Ensures tests run only when executed directly.</p>
+    
+    <h2>2. multiprocessing (Parallel Processing)</h2>
+    <pre><code>import multiprocessing
+
+def worker():
+    print("Worker process running")
+
+if __name__ == "__main__":
+    p = multiprocessing.Process(target=worker)
+    p.start()
+    p.join()</code></pre>
+    <p>Prevents infinite recursion when using multiprocessing.</p>
+    
+    <h2>3. cProfile (Python Profiler)</h2>
+    <pre><code>if __name__ == "__main__":
+    import cProfile
+    cProfile.run("main()")</code></pre>
+    <p>Profiles a Python program only when executed directly.</p>
+    
+    <h2>4. http.server (Built-in Web Server)</h2>
+    <pre><code>if __name__ == "__main__":
+    from http.server import SimpleHTTPRequestHandler
+    import socketserver
+
+    PORT = 8000
+    with socketserver.TCPServer(("", PORT), SimpleHTTPRequestHandler) as httpd:
+        print(f"Serving at port {PORT}")
+        httpd.serve_forever()</code></pre>
+    <p>Starts a local web server only when run directly.</p>
+    
+    <h2>5. venv (Python Virtual Environments)</h2>
+    <pre><code>if __name__ == "__main__":
+    import venv
+    venv.create("my_env", with_pip=True)</code></pre>
+    <p>Creates a virtual environment when executed directly.</p>
+</body>
+</html>

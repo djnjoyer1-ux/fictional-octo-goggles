@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Main Function and Command-Line Arguments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #2c3e50;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        .output {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-left: 5px solid #3498db;
+        }
+        code {
+            font-family: monospace;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Setting Up <code>main()</code> and Command-Line Arguments in Python</h1>
+
+    <h2>1. The <code>main()</code> Function in Python</h2>
+    <p>Unlike some languages like C or Java, Python does not require a <code>main()</code> function to run a script. However, it's good practice to define one for better readability and maintainability.</p>
+
+    <h3>Example of a Simple <code>main()</code> Function</h3>
+    <pre>
+# Simple main function in Python
+def main():
+    print("Hello from main!")
+
+if __name__ == "__main__":
+    main()
+    </pre>
+    <p><b>Why use <code>if __name__ == "__main__"</code>?</b></p>
+    <ul>
+        <li>It ensures that the script runs only when executed directly, not when imported as a module.</li>
+        <li>Helps in organizing code better for larger projects.</li>
+    </ul>
+
+    <h2>2. Handling Command-Line Arguments Using <code>sys.argv</code></h2>
+    <p>Python provides the <code>sys</code> module to handle command-line arguments using <code>sys.argv</code>.</p>
+
+    <h3>Example: Using <code>sys.argv</code></h3>
+    <pre>
+import sys
+
+def main():
+    # sys.argv[0] is the script name, arguments start from index 1
+    if len(sys.argv) > 1:
+        print("Arguments received:", sys.argv[1:])
+    else:
+        print("No arguments provided.")
+
+if __name__ == "__main__":
+    main()
+    </pre>
+
+    <h3>Running the Script:</h3>
+    <pre>
+python script.py arg1 arg2 arg3
+    </pre>
+    <div class="output">Output:
+        <br>Arguments received: ['arg1', 'arg2', 'arg3']
+    </div>
+
+    <h2>3. Using <code>argparse</code> for Better Argument Handling</h2>
+    <p>The <code>sys.argv</code> method is simple but lacks flexibility. The <code>argparse</code> module is recommended for handling arguments in a structured way.</p>
+
+    <h3>Example: Using <code>argparse</code></h3>
+    <pre>
+import argparse
+
+def main():
+    parser = argparse.ArgumentParser(description="A simple Python script with arguments")
+    parser.add_argument("name", type=str, help="Your name")
+    parser.add_argument("--age", type=int, help="Your age", default=0)
+    
+    args = parser.parse_args()
+
+    print(f"Hello, {args.name}!")
+    if args.age > 0:
+        print(f"You are {args.age} years old.")
+
+if __name__ == "__main__":
+    main()
+    </pre>
+
+    <h3>Running the Script:</h3>
+    <pre>
+python script.py Alice --age 25
+    </pre>
+    <div class="output">Output:
+        <br>Hello, Alice!
+        <br>You are 25 years old.
+    </div>
+
+    <h2>4. When to Use <code>sys.argv</code> vs. <code>argparse</code></h2>
+    <ul>
+        <li><b>Use <code>sys.argv</code></b> when handling very simple arguments (e.g., one or two values).</li>
+        <li><b>Use <code>argparse</code></b> when dealing with multiple arguments, optional parameters, or help messages.</li>
+    </ul>
+
+    <h2>5. Conclusion</h2>
+    <p>Now you know how to structure a Python program using <code>main()</code> and handle command-line arguments efficiently. Using <code>if __name__ == "__main__"</code> ensures that your script behaves predictably when executed directly.</p>
+
+</body>
+</html>

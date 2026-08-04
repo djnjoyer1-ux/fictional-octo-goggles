@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic AI Interview Questions</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background-color: #f9f9f9; }
+    .section { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    h1 { color: #333; }
+    pre { background: #f0f0f0; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    code { background: #eef; padding: 2px 4px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <h1>Basic AI &amp; Machine Learning Interview Questions – Explained</h1>
+
+  <div class="section">
+    <h2>1. Sigmoid Activation Function</h2>
+    <p><strong>Interview Question:</strong> Implement the sigmoid function and its derivative.</p>
+    <pre>
+import math
+
+def sigmoid(x):
+    return 1 / (1 + math.exp(-x))
+
+def sigmoid_derivative(x):
+    s = sigmoid(x)
+    return s * (1 - s)
+    </pre>
+    <p><strong>Explanation:</strong> Sigmoid squashes real values into (0,1). Its derivative s(1–s) is used in backprop.</p>
+  </div>
+
+  <div class="section">
+    <h2>2. Mean Squared Error Loss</h2>
+    <p><strong>Interview Question:</strong> Compute MSE and its gradient for predictions <code>y_pred</code> vs. true <code>y_true</code>.</p>
+    <pre>
+def mse(y_true, y_pred):
+    n = len(y_true)
+    return sum((yt - yp)**2 for yt,yp in zip(y_true, y_pred)) / n
+
+def mse_gradient(y_true, y_pred):
+    n = len(y_true)
+    return [(-2/n) * (yt - yp) for yt,yp in zip(y_true, y_pred)]
+    </pre>
+    <p><strong>Explanation:</strong> MSE measures average squared error. Its gradient guides weight updates.</p>
+  </div>
+
+  <div class="section">
+    <h2>3. Gradient Descent Step</h2>
+    <p><strong>Interview Question:</strong> Perform one update step for weights <code>w</code> with gradient <code>grad</code> and learning rate <code>lr</code>.</p>
+    <pre>
+def gradient_descent_step(w, grad, lr):
+    return [wi - lr * gi for wi,gi in zip(w, grad)]
+    </pre>
+    <p><strong>Explanation:</strong> Moves weights opposite to gradient to minimize loss.</p>
+  </div>
+
+  <div class="section">
+    <h2>4. Perceptron Prediction</h2>
+    <p><strong>Interview Question:</strong> Given weights <code>w</code>, bias <code>b</code>, and input <code>x</code>, return +1 or –1.</p>
+    <pre>
+def perceptron_predict(w, b, x):
+    activation = sum(wi*xi for wi,xi in zip(w,x)) + b
+    return 1 if activation >= 0 else -1
+    </pre>
+    <p><strong>Explanation:</strong> Basic linear classifier; decision boundary at activation=0.</p>
+  </div>
+
+  <div class="section">
+    <h2>5. Train Perceptron</h2>
+    <p><strong>Interview Question:</strong> One epoch of perceptron training.</p>
+    <pre>
+def train_perceptron(X, y, w, b, lr):
+    for xi, yi in zip(X, y):
+        pred = perceptron_predict(w, b, xi)
+        if pred != yi:
+            # update rule
+            w = [wi + lr * yi * xi_j for wi, xi_j in zip(w, xi)]
+            b += lr * yi
+    return w, b
+    </pre>
+    <p><strong>Explanation:</strong> Adjusts weights on misclassification to move boundary.</p>
+  </div>
+
+  <div class="section">
+    <h2>6. Train/Test Split</h2>
+    <p><strong>Interview Question:</strong> Split dataset into train and test sets.</p>
+    <pre>
+import random
+
+def train_test_split(X, y, test_ratio=0.2):
+    data = list(zip(X, y))
+    random.shuffle(data)
+    split = int(len(data)*(1-test_ratio))
+    train = data[:split]
+    test  = data[split:]
+    X_train, y_train = zip(*train)
+    X_test,  y_test  = zip(*test)
+    return list(X_train), list(X_test), list(y_train), list(y_test)
+    </pre>
+    <p><strong>Explanation:</strong> Shuffles and splits to evaluate generalization on unseen data.</p>
+  </div>
+
+  <div class="section">
+    <h2>7. Accuracy Metric</h2>
+    <p><strong>Interview Question:</strong> Compute classification accuracy.</p>
+    <pre>
+def accuracy(y_true, y_pred):
+    correct = sum(1 for yt,yp in zip(y_true, y_pred) if yt == yp)
+    return correct / len(y_true)
+    </pre>
+    <p><strong>Explanation:</strong> Fraction of correct predictions; simplest performance metric.</p>
+  </div>
+
+  <div class="section">
+    <h2>8. One-hot Encoding</h2>
+    <p><strong>Interview Question:</strong> Convert class labels into one-hot vectors.</p>
+    <pre>
+def one_hot(labels, num_classes):
+    result = []
+    for lab in labels:
+        vec = [0]*num_classes
+        vec[lab] = 1
+        result.append(vec)
+    return result
+    </pre>
+    <p><strong>Explanation:</strong> Transforms integer labels into binary vectors for multi-class models.</p>
+  </div>
+
+  <div class="section">
+    <h2>9. Shuffle Mini-batches</h2>
+    <p><strong>Interview Question:</strong> Generate mini-batches of size <code>batch_size</code> for SGD.</p>
+    <pre>
+def get_mini_batches(X, y, batch_size):
+    data = list(zip(X, y))
+    random.shuffle(data)
+    for i in range(0, len(data), batch_size):
+        batch = data[i:i+batch_size]
+        Xb, yb = zip(*batch)
+        yield list(Xb), list(yb)
+    </pre>
+    <p><strong>Explanation:</strong> Iterates shuffled subsets to update model in batches.</p>
+  </div>
+
+  <div class="section">
+    <h2>10. Early Stopping Criteria</h2>
+    <p><strong>Interview Question:</strong> Stop training when validation loss increases.</p>
+    <pre>
+def should_stop(val_losses, patience=3):
+    if len(val_losses) <= patience:
+        return False
+    # if no improvement in last 'patience' epochs
+    return min(val_losses[-patience:]) >= min(val_losses[:-patience])
+    </pre>
+    <p><strong>Explanation:</strong> Prevents overfitting by halting when validation loss stops improving.</p>
+  </div>
+
+</body>
+</html>

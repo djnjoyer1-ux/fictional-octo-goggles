@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Physics-Informed Neural Network (PINN) Example</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 40px; background-color: #f4f4f4; }
+    .section { background: #fff; padding: 20px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    pre { background: #eef; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    code { font-family: Consolas, monospace; }
+  </style>
+</head>
+<body>
+
+  <h1>PINN: Physics-Informed Neural Network – Basic Example</h1>
+
+  <div class="section">
+    <h2>1. Problem Definition</h2>
+    <p>We want to solve a simple 1D Poisson equation:</p>
+    <p><code>u''(x) = -π² sin(πx),  with u(0) = u(1) = 0</code></p>
+    <p>The analytical solution is: <code>u(x) = sin(πx)</code>.</p>
+  </div>
+
+  <div class="section">
+    <h2>2. Neural Network Setup</h2>
+    <pre>
+import torch
+import torch.nn as nn
+
+class PINN(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(1, 20),
+            nn.Tanh(),
+            nn.Linear(20, 20),
+            nn.Tanh(),
+            nn.Linear(20, 1)
+        )
+
+    def forward(self, x):
+        return self.net(x)
+    </pre>
+    <p><strong>Explanation:</strong></p>
+    <ul>
+      <li><code>nn.Sequential</code>: Constructs a 3-layer feedforward neural network.</li>
+      <li><code>Tanh()</code>: Smooth nonlinear activations, ideal for PDEs due to their differentiability.</li>
+      <li><code>Linear</code>: Fully connected layers with 1 input and 1 output.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>3. Physics Loss Function</h2>
+    <pre>
+def physics_loss(model, x):
+    x.requires_grad = True
+    u = model(x)
+
+    # Compute first derivative
+    du_dx = torch.autograd.grad(u, x, grad_outputs=torch.ones_like(u), create_graph=True)[0]
+
+    # Compute second derivative
+    d2u_dx2 = torch.autograd.grad(du_dx, x, grad_outputs=torch.ones_like(du_dx), create_graph=True)[0]
+
+    residual = d2u_dx2 + (torch.pi**2) * torch.sin(torch.pi * x)
+    return torch.mean(residual**2)
+    </pre>
+    <p><strong>Key lines:</strong></p>
+    <ul>
+      <li><code>requires_grad = True</code>: Enables auto-differentiation on <code>x</code>.</li>
+      <li><code>autograd.grad(...)</code>: Calculates derivatives for PINN constraints.</li>
+      <li><code>residual</code>: Measures how well the PDE is satisfied.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>4. Boundary Condition Loss</h2>
+    <pre>
+def boundary_loss(model):
+    x_left = torch.tensor([[0.0]], requires_grad=True)
+    x_right = torch.tensor([[1.0]], requires_grad=True)
+    u_left = model(x_left)
+    u_right = model(x_right)
+    return u_left.pow(2).mean() + u_right.pow(2).mean()
+    </pre>
+    <p><strong>Explanation:</strong> This enforces <code>u(0) = 0</code> and <code>u(1) = 0</code> as soft constraints in the total loss.</p>
+  </div>
+
+  <div class="section">
+    <h2>5. Training the PINN</h2>
+    <pre>
+model = PINN()
+optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+
+# Collocation points
+x_phys = torch.linspace(0, 1, 100).view(-1, 1)
+
+for epoch in range(5000):
+    optimizer.zero_grad()
+    loss = physics_loss(model, x_phys) + boundary_loss(model)
+    loss.backward()
+    optimizer.step()
+
+    if epoch % 500 == 0:
+        print(f"Epoch {epoch}, Loss: {loss.item():.6f}")
+    </pre>
+    <p><strong>Important lines:</strong></p>
+    <ul>
+      <li><code>torch.linspace(0, 1, 100)</code>: Generates 100 collocation points in the domain [0, 1].</li>
+      <li><code>loss.backward()</code>: Computes gradients of both physics and boundary losses.</li>
+      <li><code>optimizer.step()</code>: Updates the weights based on total loss.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>6. Plotting the Result (Optional)</h2>
+    <pre>
+import matplotlib.pyplot as plt
+
+x_test = torch.linspace(0, 1, 100).view(-1, 1)
+u_pred = model(x_test).detach().numpy()
+u_true = torch.sin(torch.pi * x_test).numpy()
+
+plt.plot(x_test.numpy(), u_true, label="Exact")
+plt.plot(x_test.numpy(), u_pred, '--', label="PINN")
+plt.legend()
+plt.title("PINN vs Exact Solution")
+plt.show()
+    </pre>
+    <p><strong>Explanation:</strong> This shows how close the learned solution is to the analytical result.</p>
+  </div>
+
+</body>
+</html>

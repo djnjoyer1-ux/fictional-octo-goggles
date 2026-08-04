@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Basic Program Setup Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #2c3e50;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .output {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-left: 5px solid #3498db;
+        }
+        code {
+            font-family: monospace;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basic Guide to Setting Up a Python Program</h1>
+
+    <h2>1. Setting Up Python Environment</h2>
+    <p>Before you start coding in Python, make sure that Python is installed on your computer. Here's how to set it up:</p>
+    <ol>
+        <li><b>Download Python:</b> Go to the official <a href="https://www.python.org/downloads/" target="_blank">Python Downloads page</a> and download the latest version for your operating system.</li>
+        <li><b>Install Python:</b> Follow the installation instructions. During installation, make sure to check the option that says <code>Add Python to PATH</code> (this makes it easier to run Python from the command line).</li>
+        <li><b>Verify Installation:</b> Open your command prompt or terminal and type <code>python --version</code> to ensure Python is installed. You should see something like <code>Python 3.x.x</code>.</li>
+    </ol>
+
+    <h2>2. Writing Your First Python Program</h2>
+    <p>Once Python is set up, you can write your first program. Let's start with a simple <code>"Hello, World!"</code> program.</p>
+    <pre>
+# Simple Python Program: Hello World
+print("Hello, World!")
+    </pre>
+    <p>Save this as <code>hello.py</code> (you can use any text editor like Notepad, VSCode, or PyCharm).</p>
+
+    <h2>3. Running the Python Program</h2>
+    <p>To run your Python program, follow these steps:</p>
+    <ol>
+        <li><b>Open Terminal or Command Prompt:</b> Open the terminal (Mac/Linux) or command prompt (Windows).</li>
+        <li><b>Navigate to Your Program's Directory:</b> Use the <code>cd</code> command to go to the folder where your Python script is located. For example, if your file is in the <code>C:\PythonProjects</code> folder, use <code>cd C:\PythonProjects</code>.</li>
+        <li><b>Run the Script:</b> Type <code>python hello.py</code> and hit enter. You should see the following output:</li>
+    </ol>
+    <div class="output">Output: Hello, World!</div>
+
+    <h2>4. Writing More Python Code</h2>
+    <p>Now that you've written and run a simple Python program, you can start adding more features. Here are a few examples:</p>
+
+    <h3>Example 1: Variables</h3>
+    <pre>
+# Python Variables
+name = "Alice"
+age = 25
+print("Name:", name)
+print("Age:", age)
+    </pre>
+    <div class="output">Output:
+        <br>Name: Alice
+        <br>Age: 25
+    </div>
+
+    <h3>Example 2: Conditional Statements</h3>
+    <pre>
+# Conditional Statements
+if age > 18:
+    print("You are an adult.")
+else:
+    print("You are a minor.")
+    </pre>
+    <div class="output">Output: You are an adult.</div>
+
+    <h3>Example 3: Loops</h3>
+    <pre>
+# Using a Loop
+for i in range(5):
+    print("Iteration", i)
+    </pre>
+    <div class="output">Output:
+        <br>Iteration 0
+        <br>Iteration 1
+        <br>Iteration 2
+        <br>Iteration 3
+        <br>Iteration 4
+    </div>
+
+    <h2>5. Python Development Environments</h2>
+    <p>There are different development environments (IDEs) where you can write Python programs:</p>
+    <ul>
+        <li><b>VSCode:</b> A lightweight, free, and popular code editor with support for Python.</li>
+        <li><b>PyCharm:</b> A fully-featured Python IDE with powerful features for Python development.</li>
+        <li><b>Jupyter Notebooks:</b> Great for data analysis, machine learning, and quick code prototyping.</li>
+        <li><b>Idle:</b> The default IDE that comes with Python installation, simple and good for beginners.</li>
+    </ul>
+
+    <h2>6. Conclusion</h2>
+    <p>Now you know the basic steps for setting up a Python program. With the environment installed and the knowledge of how to write and run Python scripts, you can begin learning more advanced topics like functions, object-oriented programming, and libraries for different use cases!</p>
+</body>
+</html>
