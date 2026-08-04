@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Circuits Quick Calculation Guide</title>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</head>
+<body>
+    <h1>Electric Circuit Calculations Quick Guide</h1>
+    <p>Here are some key formulas for electric circuit calculations:</p>
+
+    <h2>1. Ohm's Law</h2>
+    <p>Ohm's law relates voltage, current, and resistance:</p>
+    <p> \[
+        V = I \cdot R
+    \] </p>
+
+    <h2>2. Power Formula</h2>
+    <p>The power formula \( P = IV \) is used to calculate the power in an electrical circuit. Here's the mnemonic to remember it:</p>
+    <blockquote>
+        "If you have an IV, you have to pee" – This helps recall that power \( P \) is the product of current \( I \) and voltage \( V \).
+    </blockquote>
+    <p>Power can also be written as:</p>
+    <p> \[
+        P = I^2 \cdot R = \frac{V^2}{R}
+    \] </p>
+
+    <h2>3. Series Circuits</h2>
+    <p>In a series circuit, the total resistance is the sum of individual resistances:</p>
+    <p> \[
+        R_\text{total} = R_1 + R_2 + R_3 + \dots
+    \] </p>
+    <p>For voltage division:</p>
+    <p> \[
+        V_n = V_\text{total} \cdot \frac{R_n}{R_\text{total}}
+    \] </p>
+
+    <h2>4. Parallel Circuits</h2>
+    <p>In a parallel circuit, the total resistance is found by the reciprocal of the sum of the reciprocals of the individual resistances:</p>
+    <p> \[
+        \frac{1}{R_\text{total}} = \frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3} + \dots
+    \] </p>
+    <p>For current division:</p>
+    <p> \[
+        I_n = I_\text{total} \cdot \frac{R_\text{total}}{R_n}
+    \] </p>
+
+    <h2>5. Kirchhoff's Laws</h2>
+    <h3>Kirchhoff's Current Law (KCL)</h3>
+    <p>The sum of currents entering a junction equals the sum of currents leaving it:</p>
+    <p> \[
+        \sum I_\text{in} = \sum I_\text{out}
+    \] </p>
+
+    <h3>Kirchhoff's Voltage Law (KVL)</h3>
+    <p>The sum of voltages around any closed loop is zero:</p>
+    <p> \[
+        \sum V_\text{around a loop} = 0
+    \] </p>
+
+    <h2>6. Capacitors and Inductors</h2>
+    <h3>Capacitors in Series and Parallel</h3>
+    <p>For series capacitors:</p>
+    <p> \[
+        \frac{1}{C_\text{total}} = \frac{1}{C_1} + \frac{1}{C_2} + \dots
+    \] </p>
+    <p>For parallel capacitors:</p>
+    <p> \[
+        C_\text{total} = C_1 + C_2 + \dots
+    \] </p>
+
+    <h3>Inductors in Series and Parallel</h3>
+    <p>For series inductors:</p>
+    <p> \[
+        L_\text{total} = L_1 + L_2 + \dots
+    \] </p>
+    <p>For parallel inductors:</p>
+    <p> \[
+        \frac{1}{L_\text{total}} = \frac{1}{L_1} + \frac{1}{L_2} + \dots
+    \] </p>
+
+    <h2>7. AC Circuit Formulas</h2>
+    <p>In AC circuits, impedance is given by:</p>
+    <p> \[
+        Z = \sqrt{R^2 + (X_L - X_C)^2}
+    \] </p>
+    <p>Where \( X_L = 2 \pi f L \) and \( X_C = \frac{1}{2 \pi f C} \).<br> 
+    Power in AC circuits is:</p>
+    <p> \[
+        P = V_\text{rms} \cdot I_\text{rms} \cdot \cos(\phi)
+    \] </p>
+
+</body>
+</html>
