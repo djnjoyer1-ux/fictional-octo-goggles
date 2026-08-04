@@ -1,0 +1,11 @@
+{
+  "name": "faceblur-local-firefox",
+  "private": true,
+  "version": "0.3.0",
+  "type": "module",
+  "scripts": {
+    "vendor": "node scripts/vendor.mjs",
+    "check": "node --check popup.js && node --check content.js && node --check background.js",
+    "package": "npm run check && zip -r ../faceblur-local-firefox.zip . -x '*.DS_Store' -x '.git/*'"
+  }
+}

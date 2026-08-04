@@ -1,0 +1,18 @@
+.faceblur-overlay-root {
+  position: absolute !important;
+  z-index: 2147483646 !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+.faceblur-face-mask {
+  position: absolute !important;
+  pointer-events: none !important;
+  backdrop-filter: blur(var(--faceblur-strength, 18px)) !important;
+  -webkit-backdrop-filter: blur(var(--faceblur-strength, 18px)) !important;
+  background: rgba(128,128,128,0.03) !important;
+  border-radius: 50% !important;
+  transform: translateZ(0) !important;
+}

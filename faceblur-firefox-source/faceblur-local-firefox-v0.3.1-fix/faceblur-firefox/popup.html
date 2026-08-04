@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FaceBlur Local</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="brand-mark" aria-hidden="true">◉</div>
+    <div><h1>FaceBlur</h1><div class="subtitle">Local face privacy</div></div>
+  </header>
+
+  <section class="card primary">
+    <label class="toggle-row" for="enabled">
+      <span><strong>Enable face blur</strong><small>Blur detected faces on this site</small></span>
+      <span class="toggle"><input id="enabled" type="checkbox"><span></span></span>
+    </label>
+    <label class="toggle-row" for="siteDisabled">
+      <span><strong>Pause on this site</strong><small id="siteName">Current website</small></span>
+      <span class="toggle"><input id="siteDisabled" type="checkbox"><span></span></span>
+    </label>
+  </section>
+
+  <section class="card controls">
+    <label for="blur"><span>Blur strength</span><output id="blurOut">18 px</output></label>
+    <input id="blur" type="range" min="6" max="48" step="1" value="18">
+
+    <label for="threshold"><span>Detection sensitivity</span><output id="thresholdOut">0.45</output></label>
+    <input id="threshold" type="range" min="0.20" max="0.80" step="0.05" value="0.45">
+
+    <label for="maskScale"><span>Mask size</span><output id="maskOut">1.35×</output></label>
+    <input id="maskScale" type="range" min="1" max="2" step="0.05" value="1.35">
+
+    <label for="scanSize"><span>Detection resolution</span><output id="scanSizeOut">416 px</output></label>
+    <input id="scanSize" type="range" min="224" max="608" step="32" value="416">
+  </section>
+
+  <section class="card status">
+    <div><span class="dot" id="statusDot"></span><span id="statusText">Starting…</span></div>
+    <div id="statsText">Waiting for page</div>
+  </section>
+
+  <button id="rescan" type="button">Rescan visible media</button>
+  <button id="clearCache" class="secondary" type="button">Clear detection cache</button>
+
+  <p class="privacy">Detection runs on your device. No photos are uploaded.</p>
+  <script src="popup.js"></script>
+</body>
+</html>
