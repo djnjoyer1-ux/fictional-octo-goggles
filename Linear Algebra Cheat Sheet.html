@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Algebra Cheat Sheet</title>
+    <script type="text/javascript" async
+      src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</head>
+<body>
+    <h1>Linear Algebra Cheat Sheet</h1>
+
+    <h2>Systems of Linear Equations: Gauss Elimination</h2>
+    <p>
+        Use row operations to transform a system into an upper triangular matrix, then solve by back-substitution.  
+        Watch out for <b>pivot positions</b>—they help determine rank and solution types.
+    </p>
+
+    <h2>Vectors, Angle, Dot Product, n-space</h2>
+    <p>
+        <b>Dot product:</b> 
+        \[
+        \mathbf{a} \cdot \mathbf{b} = |\mathbf{a}||\mathbf{b}|\cos(\theta)
+        \]
+        shows the angle between vectors. If \( \mathbf{a} \cdot \mathbf{b} = 0 \), the vectors are perpendicular.
+    </p>
+
+    <h2>Vector Space, Span, Subspace, Linear Dependence, Bases, Dimension</h2>
+    <ul>
+        <li><b>Vector Space:</b> Closed under vector addition and scalar multiplication.</li>
+        <li><b>Span:</b> The set of all linear combinations of a given set of vectors.</li>
+        <li><b>Subspace:</b> Must contain the zero vector and be closed under addition and scalar multiplication.</li>
+        <li><b>Linear Independence:</b> A set of vectors is independent if no vector can be written as a combination of others.</li>
+        <li><b>Basis:</b> A minimal spanning set (independent and spans the space).</li>
+        <li><b>Dimension:</b> The number of vectors in a basis.</li>
+    </ul>
+    
+    <h2>Matrices, Transpose Matrix, Determinants</h2>
+    <p>
+        <b>Transpose:</b> Flip rows and columns (\(A^T\)).  
+        <b>Determinant:</b> If \(\det(A) \neq 0\), \(A\) is invertible. For a 2×2 matrix:
+        \[
+        \det \begin{bmatrix} a & b \\ c & d \end{bmatrix} = ad - bc
+        \]
+    </p>
+
+    <h2>Rank, Inverse Matrix, Cramer’s Rule, Change of Basis</h2>
+    <p>
+        <b>Rank:</b> Number of pivot positions, shows how many dimensions the space spans.  
+        <b>Inverse:</b> \( A^{-1} \) exists if \( \det(A) \neq 0 \).  
+        <b>Cramer’s Rule:</b> Solutions of \( A\mathbf{x}=\mathbf{b} \):
+        \[
+        x_i = \frac{\det(A_i)}{\det(A)}
+        \]
+        where \( A_i \) is matrix \( A \) with the \( i \)-th column replaced by \( \mathbf{b} \).
+    </p>
+
+    <h2>The Eigenvalue Problem</h2>
+    <p>
+        Eigenvalues \( \lambda \) and eigenvectors \( \mathbf{v} \) satisfy:
+        \[
+        A\mathbf{v} = \lambda\mathbf{v}
+        \]
+        Find eigenvalues by solving:
+        \[
+        \det(A - \lambda I) = 0
+        \]
+    </p>
+
+    <h2>Final Tips for Test Night:</h2>
+    <ul>
+        <li>Understand the connection between <b>span, rank, and independence</b>.</li>
+        <li>Practice <b>row reduction</b>—it's everywhere.</li>
+        <li>For <b>eigenvalues</b>, always check the <b>characteristic equation</b>.</li>
+        <li>Sketch graphs for vector problems to visualize <b>spans, bases, and subspaces</b>.</li>
+    </ul>
+
+    <p><b>Good luck! You've got this! 💪📚</b></p>
+
+</body>
+</html>
