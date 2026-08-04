@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>F1 Interview Must-Knows – Summary</title>
+
+  <!-- MathJax for equations -->
+  <script
+    id="MathJax-script"
+    async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0 auto;
+      padding: 1.5rem;
+      max-width: 900px;
+      line-height: 1.5;
+      color: #222;
+      background: #f9fafb;
+    }
+    h1, h2, h3 {
+      font-weight: 650;
+      margin-top: 1.8rem;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.2rem;
+    }
+    .tagline {
+      text-align: center;
+      color: #555;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+    .section {
+      background: #ffffff;
+      border-radius: 0.75rem;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .subsection-title {
+      font-weight: 600;
+      margin-top: 0.75rem;
+    }
+    ul {
+      margin-top: 0.3rem;
+      margin-bottom: 0.3rem;
+      padding-left: 1.2rem;
+    }
+    li {
+      margin-bottom: 0.2rem;
+    }
+    .key-equation {
+      background: #f3f4f6;
+      border-radius: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      margin: 0.4rem 0;
+      font-size: 0.95rem;
+    }
+    .highlight {
+      background: #fef3c7;
+      border-radius: 0.3rem;
+      padding: 0.1rem 0.25rem;
+    }
+    code {
+      font-family: "JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9rem;
+      background: #f3f4f6;
+      padding: 0.1rem 0.25rem;
+      border-radius: 0.25rem;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 700px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+    .pill {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      background: #e5e7eb;
+      color: #374151;
+      margin-right: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>F1 Interview Must-Knows</h1>
+  <div class="tagline">
+    High-level cheat sheet: physics, engineering, strategy & mindset.
+  </div>
+
+  <!-- 1. Team Structure & Context -->
+  <div class="section">
+    <h2>1. How an F1 Team Works (Context)</h2>
+    <div class="subsection-title">Core departments</div>
+    <ul>
+      <li><span class="pill">Aero</span> Wind tunnel, CFD, aero maps, correlation.</li>
+      <li><span class="pill">Design</span> CAD (e.g. CATIA/NX/SolidWorks), packaging, integration with aero & PU.</li>
+      <li><span class="pill">Vehicle Dynamics</span> Suspension geometry, ride, handling, tire models, lap simulations.</li>
+      <li><span class="pill">Power Unit</span> ICE, turbo, MGU-H (legacy), MGU-K, battery, deployment maps.</li>
+      <li><span class="pill">Strategy</span> Race sims, tire life models, probability & decision making under uncertainty.</li>
+      <li><span class="pill">Electronics & Controls</span> Sensors, ECU, control algorithms, reliability.</li>
+      <li><span class="pill">Manufacturing & Ops</span> Composites, machining, QA, logistics, pit crew.</li>
+    </ul>
+    <p>
+      <span class="highlight">Key interview idea:</span>
+      always connect your role to <strong>lap time</strong> and <strong>race result</strong>.
+    </p>
+  </div>
+
+  <!-- 2. Lap Time, Grip & Vehicle Dynamics -->
+  <div class="section">
+    <h2>2. Lap Time, Grip & Vehicle Dynamics</h2>
+
+    <div class="two-col">
+      <div>
+        <div class="subsection-title">2.1 Cornering & Lateral Acceleration</div>
+        <p>
+          F1 performance is dominated by cornering. Basic lateral acceleration:
+        </p>
+        <div class="key-equation">
+          \( a_y = \dfrac{v^2}{R} \)
+        </div>
+        <ul>
+          <li>\(a_y\) – lateral acceleration</li>
+          <li>\(v\) – cornering speed</li>
+          <li>\(R\) – corner radius</li>
+        </ul>
+        <p>
+          Maximum lateral acceleration is limited by tire grip:
+        </p>
+        <div class="key-equation">
+          \( F_y \leq \mu \, N \)
+        </div>
+        <ul>
+          <li>\(F_y\) – lateral force</li>
+          <li>\(\mu\) – tire friction coefficient (varies with load, temp, slip)</li>
+          <li>\(N\) – normal load (weight + downforce)</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="subsection-title">2.2 Lap Time Sensitivities</div>
+        <p>Teams talk in “sensitivity” terms: \(\Delta t_{\text{lap}}\) per change in parameter.</p>
+        <ul>
+          <li>Downforce: huge gains in medium–high speed corners.</li>
+          <li>Drag: hurts top speed, especially at long straights.</li>
+          <li>Weight: every extra kg costs lap time, esp. in traction and braking.</li>
+          <li>Ride height: affects ground-effect downforce and porpoising.</li>
+        </ul>
+        <p>
+          You don’t need exact numbers, but do show
+          <span class="highlight">qualitative reasoning</span>:
+          trade-offs between these.
+        </p>
+      </div>
+    </div>
+
+    <div class="subsection-title">2.3 Braking & Longitudinal Dynamics</div>
+    <ul>
+      <li>Braking distance (constant decel assumption):</li>
+    </ul>
+    <div class="key-equation">
+      \( s = \dfrac{v^2}{2a} \)
+    </div>
+    <ul>
+      <li>Where \(a\) is limited by tire grip and brake system capabilities.</li>
+      <li>ABS is banned → driver & brake balance crucial.</li>
+    </ul>
+  </div>
+
+  <!-- 3. Tires -->
+  <div class="section">
+    <h2>3. Tires – The Core of Performance</h2>
+    <p>Everything (aero, setup, driving style) aims to put tires in the right <strong>temperature, load, and slip</strong> range.</p>
+
+    <div class="subsection-title">3.1 Basic Tire Model (Simplified)</div>
+    <p>Lateral force approx:</p>
+    <div class="key-equation">
+      \( F_y \approx \mu(N, T) \; N \)
+    </div>
+    <ul>
+      <li>\(N\) – normal load (affected by aero & weight transfer).</li>
+      <li>\(T\) – tire temperature (in a narrow “window”).</li>
+      <li>\(\mu\) – not constant; peaks then drops with slip/temperature.</li>
+    </ul>
+
+    <div class="subsection-title">3.2 Practical Interview Points</div>
+    <ul>
+      <li><strong>Warm-up:</strong> getting tires up to temperature by load (cornering), slip & sometimes weaving.</li>
+      <li><strong>Degradation:</strong> loss of grip over laps (thermal, wear, graining, blistering).</li>
+      <li><strong>Pressure:</strong> affects contact patch, stiffness, and temperature behavior.</li>
+      <li><strong>Balance:</strong> understeer/oversteer often explained by front vs. rear tire state.</li>
+    </ul>
+  </div>
+
+  <!-- 4. Aerodynamics -->
+  <div class="section">
+    <h2>4. Aerodynamics – Downforce & Drag</h2>
+
+    <div class="subsection-title">4.1 Core Equations</div>
+    <p>Downforce and drag are usually written as:</p>
+    <div class="key-equation">
+      \( F_D = \dfrac{1}{2}\,\rho\,C_D\,A\,v^2 \)
+    </div>
+    <div class="key-equation">
+      \( F_L = \dfrac{1}{2}\,\rho\,C_L\,A\,v^2 \)
+    </div>
+    <ul>
+      <li>\(\rho\) – air density</li>
+      <li>\(C_D\) – drag coefficient</li>
+      <li>\(C_L\) – lift coefficient (negative for downforce)</li>
+      <li>\(A\) – reference area</li>
+      <li>\(v\) – car speed</li>
+    </ul>
+    <p>
+      F1: we usually talk about “downforce” instead of “lift” but use the same math with sign convention.
+    </p>
+
+    <div class="subsection-title">4.2 Ground Effect & Ride Height</div>
+    <ul>
+      <li>Underfloor & diffuser generate a large fraction of downforce.</li>
+      <li>Highly sensitive to <span class="highlight">ride height</span> and pitch.</li>
+      <li>Too low → flow separation, porpoising, legality plank wear.</li>
+    </ul>
+
+    <div class="subsection-title">4.3 Trade-offs & Interview Style Questions</div>
+    <ul>
+      <li>“If you gain 10% more downforce but 1% more drag, how does this affect lap time?”</li>
+      <li>Reason qualitatively:
+        <ul>
+          <li>Short tracks with many corners → downforce more valuable.</li>
+          <li>Low-downforce tracks (Monza-type) → drag penalty more painful.</li>
+        </ul>
+      </li>
+      <li>Know basics of:
+        <ul>
+          <li>CFD (meshing, turbulence models like \(k\text{-}\omega\) SST).</li>
+          <li>Wind-tunnel scaling & correlation with track data.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 5. Power Unit & Energy Management -->
+  <div class="section">
+    <h2>5. Power Unit & Energy Management (High Level)</h2>
+
+    <div class="subsection-title">5.1 Power & Tractive Force</div>
+    <p>Relation between engine power \(P\) and tractive force \(F_t\):</p>
+    <div class="key-equation">
+      \( P = F_t \, v \quad \Rightarrow \quad F_t = \dfrac{P}{v} \)
+    </div>
+    <ul>
+      <li>At low speeds: limited by tire grip (traction).</li>
+      <li>At high speeds: limited by power and drag.</li>
+    </ul>
+
+    <div class="subsection-title">5.2 Hybrid Energy (MGU-K & Battery)</div>
+    <ul>
+      <li>Harvest energy under braking.</li>
+      <li>Deploy strategically for overtakes, defending, and out-laps/in-laps.</li>
+      <li>Constraints on max power and energy per lap.</li>
+    </ul>
+    <p>
+      Interviewers want: <strong>understanding of trade-offs</strong> (e.g., save energy early in stint vs. attack now).
+    </p>
+  </div>
+
+  <!-- 6. Data & Telemetry -->
+  <div class="section">
+    <h2>6. Data Analysis & Telemetry</h2>
+
+    <div class="subsection-title">6.1 Key Signals</div>
+    <ul>
+      <li>Speed vs. distance / time.</li>
+      <li>Throttle position, brake pressure.</li>
+      <li>Steering angle.</li>
+      <li>Gear, engine RPM.</li>
+      <li>Tire temperatures & pressures, sometimes carcass vs. surface.</li>
+    </ul>
+
+    <div class="subsection-title">6.2 Typical Questions</div>
+    <ul>
+      <li>“Where is the driver losing time?” → Compare speed traces, braking points, minimum corner speeds.</li>
+      <li>“Is the problem driver or car?” → Look at consistency, balance shifts, correlation with setup changes.</li>
+    </ul>
+
+    <div class="subsection-title">6.3 Tools</div>
+    <ul>
+      <li><strong>Languages:</strong> Python, MATLAB, sometimes C++ for tools, Excel for quick checks.</li>
+      <li>Show ability to clean data, plot, and draw engineering conclusions.</li>
+    </ul>
+  </div>
+
+  <!-- 7. Strategy -->
+  <div class="section">
+    <h2>7. Race Strategy Basics</h2>
+
+    <div class="subsection-title">7.1 Key Concepts</div>
+    <ul>
+      <li><strong>Undercut:</strong> pit earlier, use fresher tires to gain time vs. rival on old tires.</li>
+      <li><strong>Overcut:</strong> stay out longer, exploit clean air or better tire phase.</li>
+      <li><strong>Undercut window:</strong> distance/time where rival is vulnerable to an undercut.</li>
+      <li><strong>VSC/SC windows:</strong> cheap pit stops — reduced time loss due to slower field.</li>
+      <li><strong>Tire offset:</strong> difference in age/compound between cars; matters for overtaking chances.</li>
+    </ul>
+
+    <div class="subsection-title">7.2 Very Simple Strategy Model Idea</div>
+    <p>Lap time model (conceptual):</p>
+    <div class="key-equation">
+      \( t_{\text{lap}} = t_0 + \Delta t_{\text{fuel}} + \Delta t_{\text{tires}} + \Delta t_{\text{traffic}} + \dots \)
+    </div>
+    <ul>
+      <li>Each stint: lap time drifts due to fuel burn, tire degradation, etc.</li>
+      <li>Pit stop: lose \(\approx\) constant time but reset tires & sometimes strategy.</li>
+    </ul>
+    <p>
+      Interviews look for: ability to think in <span class="highlight">scenarios & probabilities</span>, not perfect prediction.
+    </p>
+  </div>
+
+  <!-- 8. Manufacturing & Materials -->
+  <div class="section">
+    <h2>8. Manufacturing & Materials</h2>
+
+    <div class="subsection-title">8.1 Composites</div>
+    <ul>
+      <li>Carbon fiber reinforced polymer (CFRP): high stiffness & strength, low weight.</li>
+      <li>Anisotropic behavior → ply orientation critical.</li>
+      <li>Sandwich panels: skins + honeycomb core (Nomex/aluminum) for stiffness & weight.</li>
+    </ul>
+
+    <div class="subsection-title">8.2 Practical Topics</div>
+    <ul>
+      <li>Layup sequence, curing, quality control (voids, delamination).</li>
+      <li>Repair strategies: patching, re-laminating, NDT (ultrasound, tap test).</li>
+      <li>Machining tolerances and time-critical manufacturing (overnight parts between sessions).</li>
+    </ul>
+  </div>
+
+  <!-- 9. Regulations & Constraints -->
+  <div class="section">
+    <h2>9. Regulations, Cost Cap & Operations</h2>
+
+    <div class="subsection-title">9.1 FIA Sporting & Technical Constraints</div>
+    <ul>
+      <li><strong>Cost cap:</strong> Limits spending → optimization and prioritization.</li>
+      <li><strong>Aero Testing Restrictions (ATR):</strong> Wind-tunnel/CFD hours depend on championship position.</li>
+      <li><strong>Parc fermé:</strong> Limited changes after qualifying → setups must work in multiple conditions.</li>
+      <li><strong>PU component limits:</strong> Penalties for extra engines, gearboxes, etc.</li>
+      <li><strong>Plank wear, ride height & flexi-wings:</strong> legality under scrutineering.</li>
+    </ul>
+
+    <div class="subsection-title">9.2 Ops & Pit Stops</div>
+    <ul>
+      <li>Sub-2s pit stops require repeatable, almost “industrial” execution.</li>
+      <li>Big emphasis on training, consistency, and safety (wheel nut engagement, lollipop/light system, etc.).</li>
+    </ul>
+  </div>
+
+  <!-- 10. Behavioral & Mindset -->
+  <div class="section">
+    <h2>10. Behavioral & Mindset Must-Knows</h2>
+
+    <div class="subsection-title">10.1 What Teams Look For</div>
+    <ul>
+      <li><strong>Structured thinking:</strong> Can you break a messy problem into steps?</li>
+      <li><strong>Calm under pressure:</strong> Especially for trackside & strategy roles.</li>
+      <li><strong>Learning from failure:</strong> Post-event reviews, root-cause analysis.</li>
+      <li><strong>Communication:</strong> Clear, concise, non-dramatic reporting of issues.</li>
+      <li><strong>Passion with realism:</strong> Love for motorsport, but with a professional attitude.</li>
+    </ul>
+
+    <div class="subsection-title">10.2 Common Behavioral Questions</div>
+    <ul>
+      <li>“Tell me about a time you made a decision with incomplete information.”</li>
+      <li>“Describe a failure and what you learned from it.”</li>
+      <li>“Give an example of working under extreme time pressure.”</li>
+      <li>“How do you handle conflict in a team?”</li>
+    </ul>
+  </div>
+
+  <!-- 11. How to Use This Sheet -->
+  <div class="section">
+    <h2>11. How to Revise From This Sheet</h2>
+    <ul>
+      <li>Be able to <strong>explain each equation in words</strong> and what it means physically.</li>
+      <li>For each section, think of:
+        <ul>
+          <li>One example interview question.</li>
+          <li>One example from your own experience (project, uni, Formula Student, etc.).</li>
+        </ul>
+      </li>
+      <li>Practice a 1–2 minute explanation for:
+        <ul>
+          <li>How downforce and drag affect lap time.</li>
+          <li>How tires dictate performance.</li>
+          <li>How you would analyze a speed trace.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+</body>
+</html>
